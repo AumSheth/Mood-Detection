@@ -10,48 +10,46 @@ body {
   background: linear-gradient(to right bottom, #F5EFFF, #E5D9F2);
   color: #333;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Aligns content to the top */
-  padding: 3vh 4vw; /* Slightly reduce top padding to give more vertical space */
-  text-align: center;
+  /* Removed flex properties from body */
+  display: block; /* Default block display */
+  padding: 3vh 4vw;
+  text-align: center; /* For horizontally centering inline/inline-block elements and text */
 }
 
 /* ✅ Heading Styling */
 h1 {
   font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 3vh; /* Slightly reduce margin to give more vertical space */
+  margin-bottom: 3vh;
   color: #A294F9;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  /* text-align: center; inherited from body or implicitly centered by its nature */
 }
 
 /* ✅ Main Content Wrapper */
 .main-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+  /* Removed flex properties */
+  display: block; /* Default block display */
   width: 100%;
   max-width: 1200px;
-  margin-top: 1vh; /* Slightly reduce margin */
+  margin: 1vh auto 0 auto; /* Center the block element */
+  text-align: center; /* For centering content inside this wrapper */
 }
 
 /* ✅ Video & Canvas Styling */
 video,
 canvas {
-  flex: 1 1 300px;
+  /* Removed flex properties */
+  display: block; /* Make them block elements */
+  margin: 0 auto 0 auto; /* Center the block elements */
   max-width: 90vw;
+  width: auto; /* Allow width to adjust based on aspect ratio */
+  max-height: 60vh; /* Limit the maximum height */
   border: 3px solid #CDC1FF;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
   object-fit: cover;
-  /* Added for better mobile fit */
-  max-height: 60vh; /* Limit the maximum height on all screens to prevent excessive vertical stretch */
-  width: auto; /* Allow width to adjust based on aspect ratio */
+  margin-bottom: 30px; /* Add margin below video/canvas to separate from next element */
 }
 
 video:hover,
@@ -62,16 +60,17 @@ canvas:hover {
 /* ✅ Mood Text */
 #mood {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
-  margin-top: 3vh; /* Slightly reduce margin */
+  margin-top: 3vh;
   font-weight: bold;
   color: #A294F9;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 1px;
+  /* text-align: center; inherited from body or implicitly centered */
 }
 
 /* ✅ Button Styling */
 button {
-  margin-top: 3vh; /* Slightly reduce margin */
+  margin-top: 3vh;
   padding: 1em 2.5em;
   font-size: clamp(1rem, 3.5vw, 1.5rem);
   font-weight: bold;
@@ -83,6 +82,10 @@ button {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
+  /* For block-level buttons that need centering */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button:hover {
@@ -107,24 +110,20 @@ button:disabled {
 /* ✅ Mobile Responsiveness Fixes */
 @media (max-width: 768px) {
   body {
-    justify-content: flex-start; /* Ensure content starts from the top on small screens */
-    padding: 2vh 4vw; /* Further reduce padding on very small screens if needed */
+    padding: 2vh 4vw;
   }
 
   .main-content {
-    flex-direction: column;
-    gap: 15px; /* Slightly reduce gap between elements on mobile */
+    /* No flex properties here now */
+    margin-top: 1vh; /* Keep margin */
   }
 
   video,
   canvas {
     width: 100%;
-    max-width: 350px; /* Slightly reduce max-width if it's still too wide on some devices */
-    margin: 0 auto;
-    /* Consider a fixed aspect ratio for video for consistent appearance */
-    /* If you want a fixed aspect ratio, you'd need a wrapper div with padding-bottom trick */
-    /* For simplicity, let's keep it with max-height for now */
-    max-height: 50vh; /* Adjust this value based on how much screen space you want it to take */
+    max-width: 350px;
+    margin: 0 auto 15px auto; /* Adjust margin below elements for spacing */
+    max-height: 50vh;
   }
 
   h1 {
@@ -138,9 +137,9 @@ button:disabled {
   button {
     margin-top: 3vh;
     width: 100%;
-    max-width: 350px; /* Match max-width with video/canvas for consistency */
-    padding: 0.8em 2em; /* Slightly reduce padding for smaller buttons */
-    font-size: clamp(0.9rem, 3.5vw, 1.3rem); /* Adjust font size for smaller screens */
+    max-width: 350px;
+    padding: 0.8em 2em;
+    font-size: clamp(0.9rem, 3.5vw, 1.3rem);
   }
 }
 
@@ -157,7 +156,8 @@ button:disabled {
 
   video,
   canvas {
-    max-height: 45vh; /* Potentially reduce video height more on very small screens */
+    max-height: 45vh;
+    margin-bottom: 10px; /* Reduce spacing further on very small screens */
   }
 
   #mood {
