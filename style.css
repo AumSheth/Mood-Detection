@@ -6,8 +6,8 @@
 
 body {
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(to right bottom, #F5EFFF, #E5D9F2);
-  color: #333;
+  background: linear-gradient(to right bottom, #8e2de2, #4a00e0);
+  color: #fff;
   min-height: 100vh;
   padding: 5vh 4vw;
   text-align: center;
@@ -16,8 +16,8 @@ body {
 h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 4vh;
-  color: #A294F9;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .main-content {
@@ -26,30 +26,19 @@ h1 {
   max-width: 1200px;
 }
 
-video,
-canvas {
+video {
   width: 90%;
   max-width: 600px;
-  margin: 15px auto;
+  margin: 0 auto;
   display: block;
-  border: 3px solid #CDC1FF;
+  border: 4px solid #f06292; /* vibrant pinkish-red */
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease-in-out;
 }
 
-video:hover,
-canvas:hover {
-  transform: scale(1.02);
-}
-
-#mood {
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  margin-top: 4vh;
-  font-weight: bold;
-  color: #A294F9;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: 1px;
+video:hover {
+  transform: scale(1.03);
 }
 
 button {
@@ -58,18 +47,18 @@ button {
   font-size: clamp(1rem, 3.5vw, 1.5rem);
   font-weight: bold;
   color: #fff;
-  background: linear-gradient(to right, #CDC1FF, #A294F9);
+  background: linear-gradient(to right, #ff8a00, #e52e71);
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
 }
 
 button:hover {
-  background: linear-gradient(to right, #A294F9, #CDC1FF);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to right, #e52e71, #ff8a00); /* reverse gradient */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
   transform: translateY(-3px);
 }
 
@@ -79,9 +68,18 @@ button:active {
 }
 
 button:disabled {
-  background: #ccc;
+  background: #aaa;
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
-  color: #666;
+  color: #eee;
+}
+
+#mood {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-top: 4vh;
+  font-weight: bold;
+  color: #ffe082; /* bright yellow */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
 }
