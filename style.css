@@ -1,3 +1,4 @@
+/* ✅ Global Reset and Base Styling */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,6 +18,7 @@ body {
   text-align: center;
 }
 
+/* ✅ Heading Styling */
 h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 4vh;
@@ -24,6 +26,7 @@ h1 {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* ✅ Main Content Wrapper */
 .main-content {
   display: flex;
   flex-direction: row;
@@ -36,6 +39,7 @@ h1 {
   margin-top: 2vh;
 }
 
+/* ✅ Video & Canvas Styling */
 video,
 canvas {
   flex: 1 1 300px;
@@ -52,6 +56,7 @@ canvas:hover {
   transform: scale(1.02);
 }
 
+/* ✅ Mood Text */
 #mood {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin-top: 4vh;
@@ -61,6 +66,7 @@ canvas:hover {
   letter-spacing: 1px;
 }
 
+/* ✅ Button Styling */
 button {
   margin-top: 4vh;
   padding: 1em 2.5em;
@@ -95,7 +101,7 @@ button:disabled {
   color: #666;
 }
 
-/* ✅ Mobile Responsiveness Enhancements */
+/* ✅ Mobile Responsiveness Fixes */
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;
@@ -104,11 +110,13 @@ button:disabled {
 
   video,
   canvas {
-    max-width: 100%;
     width: 100%;
+    max-width: 400px; /* Prevent stretching on mobile */
+    margin: 0 auto;   /* Center align */
   }
 
   button {
     width: 100%;
+    max-width: 400px;
   }
 }
