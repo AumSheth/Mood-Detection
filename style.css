@@ -13,15 +13,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 5vh 4vw;
+  justify-content: flex-start; /* Aligns content to the top */
+  padding: 3vh 4vw; /* Slightly reduce top padding to give more vertical space */
   text-align: center;
 }
 
 /* ✅ Heading Styling */
 h1 {
   font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 4vh;
+  margin-bottom: 3vh; /* Slightly reduce margin to give more vertical space */
   color: #A294F9;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -36,7 +36,7 @@ h1 {
   gap: 30px;
   width: 100%;
   max-width: 1200px;
-  margin-top: 2vh;
+  margin-top: 1vh; /* Slightly reduce margin */
 }
 
 /* ✅ Video & Canvas Styling */
@@ -49,6 +49,9 @@ canvas {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
   object-fit: cover;
+  /* Added for better mobile fit */
+  max-height: 60vh; /* Limit the maximum height on all screens to prevent excessive vertical stretch */
+  width: auto; /* Allow width to adjust based on aspect ratio */
 }
 
 video:hover,
@@ -59,7 +62,7 @@ canvas:hover {
 /* ✅ Mood Text */
 #mood {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
-  margin-top: 4vh;
+  margin-top: 3vh; /* Slightly reduce margin */
   font-weight: bold;
   color: #A294F9;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
@@ -68,7 +71,7 @@ canvas:hover {
 
 /* ✅ Button Styling */
 button {
-  margin-top: 4vh;
+  margin-top: 3vh; /* Slightly reduce margin */
   padding: 1em 2.5em;
   font-size: clamp(1rem, 3.5vw, 1.5rem);
   font-weight: bold;
@@ -103,20 +106,67 @@ button:disabled {
 
 /* ✅ Mobile Responsiveness Fixes */
 @media (max-width: 768px) {
+  body {
+    justify-content: flex-start; /* Ensure content starts from the top on small screens */
+    padding: 2vh 4vw; /* Further reduce padding on very small screens if needed */
+  }
+
   .main-content {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px; /* Slightly reduce gap between elements on mobile */
   }
 
   video,
   canvas {
     width: 100%;
-    max-width: 400px; /* Prevent stretching on mobile */
-    margin: 0 auto;   /* Center align */
+    max-width: 350px; /* Slightly reduce max-width if it's still too wide on some devices */
+    margin: 0 auto;
+    /* Consider a fixed aspect ratio for video for consistent appearance */
+    /* If you want a fixed aspect ratio, you'd need a wrapper div with padding-bottom trick */
+    /* For simplicity, let's keep it with max-height for now */
+    max-height: 50vh; /* Adjust this value based on how much screen space you want it to take */
+  }
+
+  h1 {
+    margin-bottom: 2.5vh;
+  }
+
+  #mood {
+    margin-top: 2.5vh;
   }
 
   button {
+    margin-top: 3vh;
     width: 100%;
-    max-width: 400px;
+    max-width: 350px; /* Match max-width with video/canvas for consistency */
+    padding: 0.8em 2em; /* Slightly reduce padding for smaller buttons */
+    font-size: clamp(0.9rem, 3.5vw, 1.3rem); /* Adjust font size for smaller screens */
+  }
+}
+
+/* Further refinements for very small screens (e.g., older phones) */
+@media (max-width: 480px) {
+  body {
+    padding: 1.5vh 3vw;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 2vh;
+  }
+
+  video,
+  canvas {
+    max-height: 45vh; /* Potentially reduce video height more on very small screens */
+  }
+
+  #mood {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    margin-top: 2vh;
+  }
+
+  button {
+    padding: 0.7em 1.8em;
+    font-size: clamp(0.85rem, 3.8vw, 1.2rem);
   }
 }
